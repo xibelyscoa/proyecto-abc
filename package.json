@@ -1,0 +1,21 @@
+{
+  "name": "proyecto-abc",
+  "version": "1.0.0",
+  "description": "generador de planificación escolar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "plan",
+    "escolar",
+    "planificador"
+  ],
+  "author": "Xibelys Coa <xibelyscoa@gmail.com>",
+  "license": "\tMIT",
+  "dependencies": {
+    "express": "^4.16.1",
+    "mongoose": "^4.11.14"
+  }
+}

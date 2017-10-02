@@ -1,2 +1,2 @@
-# proyecto-abc
+# ABC Plan
 generador de planificación escolar

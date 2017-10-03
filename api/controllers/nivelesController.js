@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 var Nivel = mongoose.model('Niveles');
 
 exports.listAll = function(req, res){
-    console.log('Listar Niveles');
+    console.log(Date.toString,'> Listar Niveles');
     Nivel.find({}, function(err, niveles){
         if(err){
             console.log('Error de niveles');
             res.send(err);
         }
-        console.log('Enviando respuesta');
+        console.log(Date.toString,'> Enviando respuesta');
         res.json(niveles);
     });
 };

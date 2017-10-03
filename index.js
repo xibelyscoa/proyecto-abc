@@ -1,9 +1,17 @@
 var routes = require('./api/routes/routes'),
 express= require('express');
 app= express();
+const exphbs  = require('express-handlebars');
 port= 3000;
-
 mongoose= require('mongoose');
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
+
+app.get('/', function (req, res) {
+    res.render('home')
+})
+
 
 niveles= require('./api/models/nivelesSchema');
 materias= require('./api/models/materiasSchema');

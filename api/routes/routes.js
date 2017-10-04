@@ -24,6 +24,8 @@ module.exports = function(app){
     app.route('/api/contenidos/')
         .get(contenidos.listAll)
         .post(contenidos.createOne);
+    app.route('/api/contenidos/by/')
+        .post(contenidos.listByFilters);
     app.route('/api/contenidos/:contenidoId')
         .get(contenidos.getOne)
         .put(contenidos.updateOne)

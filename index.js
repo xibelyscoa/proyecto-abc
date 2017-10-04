@@ -7,9 +7,13 @@ mongoose= require('mongoose');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
-
+app.use('/', express.static('public'));
 app.get('/', function (req, res) {
     res.render('home')
+})
+
+app.get('/generador', function (req, res) {
+  res.render('generador')
 })
 
 

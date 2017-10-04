@@ -10,6 +10,15 @@ exports.listAll = function(req, res){
     });
 };
 
+exports.listByFilters = function(req, res){
+    Contenido.find(req.body.materia, function(err, contenidos){
+        if(err){
+            res.send(err);
+        }
+        res.json(contenidos);
+    });
+};
+
 exports.createOne = function(req, res){
     var New_Contenido = new Contenido(req.body); 
     New_Contenido.save(function(err, contenido){

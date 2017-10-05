@@ -17,7 +17,7 @@ window.onload=function() {
         opcion.textContent = nivel.nombre
         select.appendChild(opcion)
       })
-   
+      $('select').material_select();
     }
     nivelesHttp.open("GET",'/api/niveles/', true);
     nivelesHttp.send();
@@ -34,15 +34,17 @@ window.onload=function() {
       const checkbox = document.querySelector('.materias')
       
       materias.forEach((materia) => {
-        const label = document.createElement('label')
-        label.setAttribute('class','checkbox-inline')
+        const p = document.createElement('p')
         const input = document.createElement('input')
+        const label = document.createElement('label')
+        label.setAttribute('for','checkbox_'+materia._id)
         input.setAttribute('type','checkbox')
-        input.setAttribute('id','checkbox_'+materia.area)
+        input.setAttribute('id','checkbox_'+materia._id)
         input.setAttribute('value',materia.area)
-        label.appendChild(input)
-        label.innerHTML=label.innerHTML+materia.area
-        checkbox.appendChild(label)
+        label.textContent= materia.area
+        p.appendChild(input)
+        p.appendChild(label)
+        checkbox.appendChild(p)
       })
     }
     materiasHttp.open("GET",'/api/materias/', true);

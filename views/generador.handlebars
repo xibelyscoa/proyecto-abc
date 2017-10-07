@@ -1,13 +1,44 @@
 <div class="container">
-    <form class="row">
-    <div class="form-group">
-        <div class="input-field col s12">
-            <select class="form-control">
-            </select>
+    <form>
+        <div class="form-group">
+            <div class="row">
+                <h4>Selecciona el nivel</h4>
+                <div class="col l6 s12 m6">
+                    <select class="form-control ">
+                    </select>
+                </div>
+                <div class="col s12 m3 l3">
+                    <img class="responsive-img" src="/img/school/research-1.svg">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col s12 m3 l3">
+                    <img class="responsive-img" src="/img/school/books.svg">
+                </div>
+                <div class="form-group materias" class="input-field col s12 m6">
+                    <h4>Marca las materias</h4>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m3 l12 center">
+                <a class="waves-effect waves-light btn-large light-blue accent-4" id="consultaContenido"><i class="material-icons right">cloud</i>ENVIAR</a>
+            </div>
+        </div>
+    </form>
+    <div id="contenidos" class="row" hidden>
+        <div class=" col s12 m6 l6">
+            <div class="collection text-blue">
+            </div>
+        </div>
+        <div class=" col s12 m6 l6" id="contenedorCarta">
+
         </div>
     </div>
-    <div class="form-group materias">
-    </div> 
-</form>
 </div>
 <script src="js/script.js"></script>

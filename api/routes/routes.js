@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function(app){
     var niveles= require('../controllers/nivelesController');
     var materias= require('../controllers/materiasController');

@@ -4,3 +4,25 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+.left-align {
+  margin-left: 20px;
+}
+.right-align{
+  margin-right: 10px;
+}
+.button{
+  margin-left: 200px;
+}
+#button {
+  margin-bottom: 20px;
+}
+footer {
+  background-color:  #0091ea;
+}
+
+light {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+     

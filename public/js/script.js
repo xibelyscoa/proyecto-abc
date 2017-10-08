@@ -8,7 +8,7 @@ window.onload = function () {
       llenarNiveles(respuesta)
     }
   };
-
+  // Listar los niveles escolares traidos por la base de datos
   const llenarNiveles = (niveles) => {
     const select = document.querySelector('select')
 
@@ -28,7 +28,7 @@ window.onload = function () {
       llenarMaterias(respuesta)
     }
   };
-
+//Listar las materias academicas traidas por la base de datos
   const llenarMaterias = (materias) => {
     const checkbox = document.querySelector('.materias')
 
@@ -58,11 +58,11 @@ window.onload = function () {
   materiasHttp.open("GET", '/api/materias/', true);
   materiasHttp.send();
 }
-
+//funcion onclick para seleccionar contenidos
 var consultaContenido = document.querySelector('#consultaContenido');
 consultaContenido.onclick = function () {
   const contenidosHttp = new XMLHttpRequest();
-
+// funcion para llenar los contenidos en la coleccion
   const llenarContenidos = (contenidos) => {
     const div = document.querySelector('.collection')
     const contenedorCarta = document.querySelector('#contenedorCarta')
@@ -87,7 +87,7 @@ consultaContenido.onclick = function () {
       llenarContenidos(respuesta)
     }
   };
-
+// ajax para listar los contenidos en la carta de acuerdo a la materia
   contenidosHttp.open("POST", '/api/contenidos/by/', true);
   contenidosHttp.setRequestHeader("Content-type", "application/json");
   var gradoValue= document.querySelector('select').value
@@ -106,7 +106,7 @@ consultaContenido.onclick = function () {
     { $or:query}
   ));
 } 
-
+// funcion click de la materia para ocultar todas las cartas y dejar visible solo a la seleccionada
 function click() {
   const contenedorCarta = document.querySelector('#contenedorCarta')
   contenedorCarta.childNodes.forEach((cartasOcultas) => {
@@ -128,7 +128,7 @@ function guardarContenidos() {
 
 }
 
-//l
+//Se crean los elementos de las cards y se la asigna el valor de la descripcion del contenido de la base de datos
 function CrearElementosCarta(contenido) {
   const DivCard = document.createElement('div')
   DivCard.setAttribute('class', 'card')
@@ -137,7 +137,12 @@ function CrearElementosCarta(contenido) {
   const DivcardImage = document.createElement('div')
   DivcardImage.setAttribute('class', 'card-image')
   const img = document.createElement('img')
-  img.setAttribute('src', 'img/school/abacus.svg')
+  var imagen=contenido.imagen;
+  if(imagen===''||imagen==undefined){
+    img.setAttribute('src', 'img/materias/default.svg')
+  }else{
+    img.setAttribute('src', 'img/materias/'+imagen)
+  }
   const span = document.createElement('span')
   span.setAttribute('class', 'card-title')
   span.textContent = contenido.unidad

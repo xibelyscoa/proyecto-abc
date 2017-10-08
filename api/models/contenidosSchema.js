@@ -7,16 +7,12 @@ var contenidosSchema = new Schema({
       required: "Debe ingresar una unidad"
   },
   grado: {
-    type: [{
-      type: String
-  }]
-
+      type: String,
+      required: "Debe ingresar un grado académico"
   },
   materia: {
-    type: [{
-      type: String
-  }]
-
+    type: String,
+    required: "Debe ingresar una materia académica"
   },
   keywords: {
     type: [{
@@ -28,6 +24,9 @@ var contenidosSchema = new Schema({
     required: "Debe ingresar una descripción en formato de texto"
   },
   glosario: {
+    type: []
+  },
+  terminos: {
     type: []
   },
   status:{

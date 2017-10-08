@@ -17,6 +17,7 @@
   "dependencies": {
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^4.11.14"
+    "mongoose": "^4.11.14",
+    "pdfkit": "^0.8.3"
   }
 }

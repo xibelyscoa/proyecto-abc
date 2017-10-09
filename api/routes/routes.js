@@ -35,7 +35,7 @@ module.exports = function(app){
     app.route('/api/planes/')
         .get(planes.listAll)
         .post(planes.createOne);
-    app.route('/api/planes/:planlId')
+    app.route('/api/planes/:planId')
         .get(planes.getOne)
         .put(planes.updateOne)
         .delete(planes.deleteOne);

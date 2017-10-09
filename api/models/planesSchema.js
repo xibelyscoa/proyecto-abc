@@ -5,6 +5,9 @@ var planesSchema = new Schema({
   nombre:  {
       type: String,
   },
+  email:  {
+    type: String,
+  },
   descripcion: {
     type: String,
   },

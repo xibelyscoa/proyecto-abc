@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col s12 m12 l12 center">
-                <a class="waves-effect waves-light btn-large light-blue accent-4" id="consultaContenido"><i class="material-icons right">autorenew</i>CARGAR</a>
+                <a class="waves-effect waves-light btn-large light-blue accent-4" id="consultaContenido"><i class="material-icons right">autorenew</i>CARGAR CONTENIDOS</a>
             </div>
         </div>
     </form>
@@ -38,6 +38,35 @@
         </div>
         <div class=" col s12 m6 l6" id="contenedorCarta">
 
+        </div>
+        <div class="col s12 m12 l12">
+            <div class="row">
+                <h5>Registrate</h5>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">person</i>
+                            <input id="nameClient" name="name" type="text" class="validate">
+                            <label for="name" class="blue-text">Nombre</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="emailClient" name="email" type="email" class="validate">
+                            <label for="email" class="blue-text">Email</label>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col s12 m12 l12 center">
+            <a class="waves-effect waves-light btn-large light-blue accent-4" id="generar_reporte"><i class="material-icons right">autorenew</i>OBTENER MI REPORTE</a>
+        </div>
+    </div>
+    <div id="reporte" class="row" hidden>
+        <iframe class="col l12 m12 s12" type="application/pdf" height="500px"></iframe>
+        <h4>Comparte con este enlace</h4>
+        <div class="input-field col s12">
+            <input id="link" type="text" readonly>
         </div>
     </div>
 </div>

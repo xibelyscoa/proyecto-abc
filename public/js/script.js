@@ -68,6 +68,12 @@ consultaContenido.onclick = function () {
     const contenedorCarta = document.querySelector('#contenedorCarta')
     div.textContent = ''
     contenedorCarta.textContent = ''
+    // Test de soporte LDB
+    if(setLocalData('test','test')){
+      cleanLocalData();
+    }else{
+      document.cookie=JSON.stringify(contenidos);
+    }
     contenidos.forEach((contenido) => {
       const item = document.createElement('a')
       item.setAttribute('href', '#!')
@@ -77,8 +83,8 @@ consultaContenido.onclick = function () {
       item.textContent = contenido.unidad
       div.appendChild(item)
       contenedorCarta.appendChild(CrearElementosCarta(contenido))
+      porLDB=setLocalData(contenido._id,contenido);
     });
-
     document.querySelector('#contenidos').removeAttribute('hidden')
   }
   contenidosHttp.onreadystatechange = function () {
@@ -97,7 +103,6 @@ consultaContenido.onclick = function () {
       var materiaValue= {
         materia:casilla.value,
         grado: gradoValue
-        
       }
       query.push(materiaValue);
     }
@@ -165,4 +170,74 @@ function CrearElementosCarta(contenido) {
   DivCardContent.appendChild(p)
   DivCard.appendChild(DivCardContent)
   return DivCard;
+}
+document.querySelector('#generar_reporte').onclick = function () {
+  var gradoValue= document.querySelector('select').value;
+  var queryContenidos= [];
+  var contenidos_encookies=[];
+  var almacen=false;
+  // Test de soporte LDB
+  if(setLocalData('test','test')){
+    almacen=true;
+  }else{
+    contenidos_encookies=JSON.parse(document.cookie);
+  }
+  document.querySelector('.collection').querySelectorAll('a').forEach((item) => {
+    //console.log(item.getAttribute('class').search('active'));
+    if(item.getAttribute('class').search('active')===16){
+      var contenido_id= item.id.replace('item_', '');
+      if(almacen){
+        queryContenidos.push(getLocalData(contenido_id));  
+      }else{
+        contenidos_encookies.forEach(function(cont){
+          if(cont._id===contenido_id){
+            queryContenidos.push(getLocalData(contenido_id));
+            return;
+          }
+        });
+      }
+    }
+  });
+  const planHttp = new XMLHttpRequest();
+  planHttp.onreadystatechange = function () {
+    if (planHttp.readyState == 4 && planHttp.status == 200) {
+      const respuesta = JSON.parse(planHttp.responseText);
+      document.querySelector('#reporte').removeAttribute('hidden');
+      document.querySelector('#link').value='http://localhost:3000/plan/'+respuesta._id;
+      document.querySelector('iframe').setAttribute('src','/plan/'+respuesta._id);
+    }
+  };
+
+  planHttp.open("POST", '/api/planes/', true);
+  planHttp.setRequestHeader("Content-type", "application/json");
+  planHttp.send(JSON.stringify({ 
+    contenidos :queryContenidos,
+    nombre: document.querySelector('#nameClient').value,
+    email: document.querySelector('#emailClient').value,
+    grado: document.querySelector('select').value 
+    }
+  ));
+  document.querySelector('#reporte').removeAttribute('hidden');
+};
+
+function setLocalData(keyinput,valinput){
+  if(typeof(window.localStorage) != 'undefined'){ 
+      window.localStorage.setItem(keyinput,JSON.stringify(valinput));
+      return true;
+  }else{ 
+      return false; 
+  }
+}
+
+function getLocalData(keyinput){
+  if(typeof(window.localStorage) != 'undefined'){ 
+    return JSON.parse(window.localStorage.getItem (keyinput));
+  }
+}
+
+function cleanLocalData(){
+  if(typeof(window.localStorage) != 'undefined'){ 
+    window.localStorage. clear() ;
+  }
+  return true;  
 }

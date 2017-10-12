@@ -203,7 +203,7 @@ document.querySelector('#generar_reporte').onclick = function () {
     if (planHttp.readyState == 4 && planHttp.status == 200) {
       const respuesta = JSON.parse(planHttp.responseText);
       document.querySelector('#reporte').removeAttribute('hidden');
-      document.querySelector('#link').value='http://localhost:3000/plan/'+respuesta._id;
+      document.querySelector('#link').value='https://abc-plan.herokuapp.com/'+respuesta._id;
       document.querySelector('iframe').setAttribute('src','/plan/'+respuesta._id);
     }
   };
@@ -241,3 +241,4 @@ function cleanLocalData(){
   }
   return true;  
 }
+

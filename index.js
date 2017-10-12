@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 app = express();
 const exphbs = require('express-handlebars');
 
-port = 3000;
+port = process.env.PORT || 3000;
 mongoose = require('mongoose');
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -40,7 +40,7 @@ app.use(json_body_parser);
 app.use(urlencoded_body_parser);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/proyectoABC', {
+mongoose.connect('mongodb://app:r6cI4tbiZa2Zc1nd@cluster0-shard-00-00-rchaz.mongodb.net:27017,cluster0-shard-00-01-rchaz.mongodb.net:27017,cluster0-shard-00-02-rchaz.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {
     useMongoClient: true,
 });
 
